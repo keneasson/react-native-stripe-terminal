@@ -29,7 +29,7 @@ declare namespace StripeTerminal {
 
 }
 
-type ConnectionStatusConnected = string;s
+type ConnectionStatusConnected = string;
 
 type ConnectionManagerStatusConnected = 'connected';
 type ConnectionManagerStatusConnecting = 'connecting';
