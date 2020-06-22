@@ -1,3 +1,4 @@
+import { EmitterSubscription } from 'react-native';
 
 export type stripeReaders = { serialNumber: string }[];
 
@@ -16,14 +17,16 @@ declare namespace StripeTerminal {
         useSimulator: useSimulatedReader
     ): Promise<any>;
 
-    function addDidChangeConnectionStatusListener(callback: ({status}: {status: string}) => void): void;
-    function addDidDisconnectUnexpectedlyFromReaderListener(callback: () => void): void;
-    // function addDidBeginWaitingForReaderInputListener(callback: ({text}: {text: string}) => void): void;
-    // function addDidRequestReaderInputPromptListener(callback: ({text}: {text: string}) => void): void;
+    function addDidChangeConnectionStatusListener(callback: ({status}: {status: string}) => void): EmitterSubscription;
+    function addDidDisconnectUnexpectedlyFromReaderListener(callback: () => void): EmitterSubscription;
+    // function addDidBeginWaitingForReaderInputListener(callback: ({text}: {text: string}) => void): EmitterSubscription;
+    // function addDidRequestReaderInputPromptListener(callback: ({text}: {text: string}) => void): EmitterSubscription;
 
-    function addReadersDiscoveredListener(callback: Function): Promise<{}>;
+    function addReadersDiscoveredListener(callback: Function): EmitterSubscription;
 
     function connectReader(serialNumber: string): Promise<any>
+
+    function getConnectedReader(): Promise<any>
 
     function disconnectReader(): Promise<any>
 
